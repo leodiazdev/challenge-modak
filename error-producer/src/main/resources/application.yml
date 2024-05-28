@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: ErrorProducer
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+  data:
+    redis:
+      host: redis
+      port: 6379
+
+rate-limits:
+  types:
+    - type: "status"
+      maxCount: 2
+      timeLimit: 60000  # 1 minute in milliseconds
+    - type: "news"
+      maxCount: 1
+      timeLimit: 86400000  # 1 day in milliseconds
+    - type: "marketing"
+      maxCount: 3
+      timeLimit: 3600000  # 1 hour in milliseconds

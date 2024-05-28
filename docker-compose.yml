@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  productor:
+    build:
+      context: ./error-producer
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - rabbitmq
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_REDIS_HOST: redis
+    ports:
+      - "8080:8080"
+
+  consumer:
+    build:
+      context: ./errorconsumer
+      dockerfile: Dockerfile
+    depends_on:
+      - redis
+      - rabbitmq
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_REDIS_HOST: redis
+    ports:
+      - "8081:8080"

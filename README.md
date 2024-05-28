@@ -1,7 +1,5 @@
 # challenge-modak
 
-Description of the project goes here. Explain what this project does and who it's for.
-
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
@@ -85,8 +83,6 @@ This section provides an example of how to test the API endpoints using Postman.
 ```
 
 # challenge-modak
-
-Descripción del proyecto aquí. Explica qué hace este proyecto y para quién es.
 
 ## Prerrequisitos
 

@@ -37,10 +37,8 @@ public class MessageListenerTests {
     public void testReceiveMessage() {
         Message mockMessage = new Message("user1", "news", "Hello World");
 
-        // Act: simula la recepción del mensaje
         messageListener.receiveMessage(mockMessage);
 
-        // Assert: verifica que los datos correctos se imprimen en la consola
         String output = outContent.toString();
         assertTrue(output.contains("Received message from queue:"));
         assertTrue(output.contains("Type: news"));

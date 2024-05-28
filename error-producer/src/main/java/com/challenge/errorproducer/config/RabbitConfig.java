@@ -10,7 +10,7 @@ public class RabbitConfig {
 
     @Bean
     public Queue errorsQueue() {
-        return new Queue("messages", true); // true para que sea durable
+        return new Queue("messages", true);
     }
 
     @Bean

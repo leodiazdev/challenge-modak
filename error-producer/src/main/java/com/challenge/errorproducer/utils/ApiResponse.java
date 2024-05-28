@@ -11,7 +11,6 @@ public class ApiResponse {
         this.data = data;
     }
 
-    // Getters y setters
     public boolean isSuccess() {
         return success;
     }

@@ -1,6 +1,7 @@
 package com.challenge.errorproducer.producer;
 
 import com.challenge.errorproducer.domain.Message;
+import com.challenge.errorproducer.exceptions.RateLimitExceededException;
 import com.challenge.errorproducer.utils.RateLimiter;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -19,12 +20,13 @@ public class MessageProducer {
         this.rateLimiter = rateLimiter;
     }
 
-    public void sendMessage(Message message) {
+    public void sendMessage(Message message) throws RateLimitExceededException {
         if (rateLimiter.isAllowed(message.getUserId(), message.getType())) {
             rabbitTemplate.convertAndSend("messages", message);
             System.out.println("Sent message: " + message.getContent());
         } else {
             System.out.println("Limit reached, message not sent: " + message.getContent());
+            throw new RateLimitExceededException("Rate limit exceeded");
         }
     }
 }

@@ -5,7 +5,6 @@ public class Message {
     private String type;
     private String content;
 
-    // Constructores, getters y setters
     public Message() {}
 
     public Message(String userId, String type, String content) {

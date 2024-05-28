@@ -27,7 +27,7 @@ public class RateLimiterTests {
 
     @Test
     void whenLimitNotReached_allowRequest() {
-        // Setup
+ 
         String userId = "user1";
         String actionType = "news";
         RateLimitConfig config = new RateLimitConfig();
@@ -39,16 +39,14 @@ public class RateLimiterTests {
         when(valueOperations.increment("rate:news:user1")).thenReturn(1L);
         when(redisTemplate.expire(anyString(), anyLong(), any())).thenReturn(true);
 
-        // Act
         boolean allowed = redisRateLimiter.isAllowed(userId, actionType);
 
-        // Assert
         assertThat(allowed).isTrue();
     }
 
     @Test
     void whenLimitReached_rejectRequest() {
-        // Setup
+
         String userId = "user1";
         String actionType = "news";
         RateLimitConfig config = new RateLimitConfig();
@@ -57,12 +55,10 @@ public class RateLimiterTests {
         redisRateLimiter = new RateLimiter(redisTemplate, config);
 
         when(redisTemplate.opsForValue()).thenReturn(valueOperations);
-        when(valueOperations.increment("rate:news:user1")).thenReturn(2L);  // Limit is 1
+        when(valueOperations.increment("rate:news:user1")).thenReturn(2L);
 
-        // Act
         boolean allowed = redisRateLimiter.isAllowed(userId, actionType);
 
-        // Assert
         assertThat(allowed).isFalse();
     }
 }

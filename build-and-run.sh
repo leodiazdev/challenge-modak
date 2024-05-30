@@ -16,10 +16,10 @@ if [ ! -f "$rootDirectory/errorconsumer/gradle/wrapper/gradle-wrapper.jar" ]; th
 fi
 
 echo "Construyendo el proyecto Productor..."
-(cd "$rootDirectory/error-producer" && ./gradlew clean build)
+(cd "$rootDirectory/error-producer" && gradle clean build)
 
 echo "Construyendo el proyecto Consumidor..."
-(cd "$rootDirectory/errorconsumer" && ./gradlew clean build)
+(cd "$rootDirectory/errorconsumer" && gradle clean build)
 
 echo "Navegando al directorio de Docker Compose..."
 cd "$rootDirectory"

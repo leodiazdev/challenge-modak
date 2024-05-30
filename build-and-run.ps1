@@ -10,12 +10,12 @@ $rootDirectory = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Navega al directorio del proyecto productor y construye el proyecto
 Write-Host "Construyendo el proyecto Productor..."
 Set-Location "$rootDirectory\error-producer"
-.\gradlew clean build
+gradle clean build
 
 # Navega al directorio del proyecto consumidor y construye el proyecto
 Write-Host "Construyendo el proyecto Consumidor..."
 Set-Location "$rootDirectory\errorconsumer"
-.\gradlew clean build
+gradle clean build
 
 # Vuelve al directorio donde está tu docker-compose.yml
 Write-Host "Navegando al directorio de Docker Compose..."

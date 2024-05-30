@@ -1,3 +1,5 @@
+<img width="618" alt="image" src="https://github.com/leodiazdev/challenge-modak/assets/134031363/c4780ed9-782a-46fc-9c6f-b50d20896479">
+
 # challenge-modak
 
 ## Prerequisites
